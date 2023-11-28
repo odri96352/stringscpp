@@ -8,12 +8,14 @@ void test_constructeur_default();
 void test_c_str();
 void test_clear();
 int test_max_size();
+void test_operator_egal();
 
 int main(){
 
   test_constructeur_default();
   test_c_str();
   test_clear();
+  test_operator_egal();
 
   char a = 'a';
   char* s = &a;
@@ -59,3 +61,9 @@ void test_clear(){
 };
 
 int test_max_size(){};
+
+void test_operator_egal(){
+  string test=string();
+  test.operator_egal('t');
+  test.print();
+};

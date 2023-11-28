@@ -10,6 +10,7 @@ class string{
     void clear();
     int length();
     int max_size();
+    void operator_egal(char t);
   private :
     char* list_char_;
     int size_;

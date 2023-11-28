@@ -78,3 +78,9 @@ void string::clear(){
   delete [] list_char_;
   this->list_char_=nullptr;
 };
+
+void string::operator_egal(char t){
+  this->size_=0;
+  delete [] this->list_char_;
+  this->list_char_[this->size_]=t;
+};
