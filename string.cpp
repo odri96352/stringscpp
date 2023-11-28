@@ -38,7 +38,17 @@ void string::print(){
 string::string(char* s){
   //Copies the null-terminated character sequence
   //(C-string) pointed by s.
-  list_char_ = new char[1];
+  this -> list_char_ = new char[1];
   list_char_[0] = *s;
-  size_ = 1;
+  this -> size_ = 1;
+};
+
+string::string(char* s, int n){
+  //Copies the first n characters
+  //from the array of characters pointed by s.
+  this -> size_ = n;
+  this -> list_char_ = new char[this -> size_];
+  for(int i=0; i<this -> size_; i++){
+    list_char_[i] = s[i];
+  }
 };
