@@ -3,8 +3,8 @@ class string{
     string();
     string(const string& copy);
     int size();
-    string(char* c);
+    void print();
   private :
-    char[] list_char_;
+    char* list_char_;
     int size_;
-}
+};
