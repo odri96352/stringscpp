@@ -2,18 +2,20 @@
 #include<cstdlib>
 #include<iostream>
 
+void test_constructeur_default();
+void test_copy_constructor(string t);
+void test_c_str(string t);
+void test_clear();
 void test_constructor_c_string(char* s);
 void test_constructor_c_string_array(char* s, int size_t);
-void test_constructeur_default();
-void test_c_str();
-void test_clear();
 int test_max_size();
 void test_operator_egal();
+void test_resize(string t);
 
 int main(){
-
   test_constructeur_default();
-  test_c_str();
+  test_copy_constructor(test);
+  test_c_str(test);
   test_clear();
   test_operator_egal();
 
@@ -21,26 +23,28 @@ int main(){
   char* s = &a;
   test_constructor_c_string(s);
 
-  int size_t = 3;
+  int taille = 3;
   char t[] = {'a','b','c'};
-  test_constructor_c_string_array(t, size_t);
+  test_constructor_c_string_array(t, taille);
 
-  string test = string();
-  test.print();
-  std::cout<<test.c_str()<<std::endl;
+
+  test_resize(test);
 
   std::exit(EXIT_SUCCESS);
-}
-
+};
 
 void test_constructeur_default(){
   string test = string();
   test.print();
 };
 
-void test_c_str(){
-  string test=string();
-  std::cout<<test.c_str()<<std::endl;
+void test_copy_constructor(string t){
+  string test_copy=string(t);
+  test_copy.print();
+};
+
+void test_c_str(string t){
+  std::cout<<t.c_str()<<std::endl;
 };
 
 void test_constructor_c_string(char* s){
@@ -53,7 +57,6 @@ void test_constructor_c_string_array(char* t, int size_t){
   output.print();
 };
 
-
 void test_clear(){
   string test=string();
   test.clear();
@@ -62,8 +65,18 @@ void test_clear(){
 
 int test_max_size(){};
 
+void test_resize(string t){
+  std::cout << "augmenter la taille de mon string"<<std::endl;
+  t.resize(t.size() + 1);
+  t.print();
+  std::cout<<std::endl;
+  std::cout << "diminuer la taille de mon string"<<std::endl;
+  t.resize(t.size() - 2);
+  t.print();
+  std::cout<<std::endl;
+};
+
 void test_operator_egal(){
   string test=string();
   test.operator_egal('t');
   test.print();
-};
