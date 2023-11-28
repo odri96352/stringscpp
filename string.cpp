@@ -35,7 +35,6 @@ string::string(const string& copy){
 	}
 };
 
-
 void string::print(){
   for(int i=0; i<this->size_; ++i){
     std::cout<<this->list_char_[i];
@@ -62,25 +61,51 @@ string::string(char* s, int n){
 };
 
 char* string::c_str(){
-
   char* cEquivalent=new char[this->size_ +1];
   for(int i=0; i<this->size_; ++i){
     cEquivalent[i]=this->list_char_[i];
-  }
+    }
   cEquivalent[this->size_ +1]='\0';
   //cEquivalent[this->size_ +2]='0';
   return cEquivalent;
 };
 
+void string::resize(int n){
+  // Resizes the string to a length of n characters.
 
-void string::clear(){
-  this->size_=0;
-  delete [] list_char_;
-  this->list_char_=nullptr;
+  // If n is smaller than the current string length,
+  // the current value is shortened to its first n character,
+  // removing the characters beyond the nth.
+
+  // If n is greater than the current string length,
+  // the current content is extended by inserting at the end
+  // as many characters as needed to reach a size of n.
+
+  if(n > size_){
+    char* temp = new char[n];
+    for(int i=0; i< size_; i++){
+      temp[i]=list_char_[i];
+    }
+    delete [] this -> list_char_;
+    for(int i=size_; i < n; i++){
+      temp[i]= '0';
+    }
+    this -> list_char_ = temp;
+    this -> size_ = n;
+
+  }else if(n < size_){
+    char* temp = new char[n];
+    for(int i=0; i< n; i++){
+      temp[i]=list_char_[i];
+    }
+    delete [] this -> list_char_;
+    this -> list_char_ = temp;
+    this -> size_ = n;
+
+  }else{
+    return;
+  }
+return;
 };
 
-void string::operator_egal(char t){
-  this->size_=0;
-  delete [] this->list_char_;
-  this->list_char_[this->size_]=t;
-};
+void string::resize(int n,  char c){};
