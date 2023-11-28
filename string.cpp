@@ -41,7 +41,7 @@ string::string(char* s){
   this -> list_char_ = new char[1];
   list_char_[0] = *s;
   this -> size_ = 1;
-};
+}
 
 string::string(char* s, int n){
   //Copies the first n characters
@@ -50,5 +50,14 @@ string::string(char* s, int n){
   this -> list_char_ = new char[this -> size_];
   for(int i=0; i<this -> size_; i++){
     list_char_[i] = s[i];
+
+char* string::c_str(){
+
+  char* cEquivalent=new char[this->size_ +1];
+  for(int i=0; i<this->size_; ++i){
+    cEquivalent[i]=this->list_char_[i];
   }
-};
+  cEquivalent[this->size_ +1]='\0';
+  //cEquivalent[this->size_ +2]='0';
+  return cEquivalent;
+}

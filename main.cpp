@@ -1,5 +1,6 @@
 #include "string.h"
 #include<cstdlib>
+#include<iostream>
 
 void test_constructor_c_string(char* s);
 void test_constructor_c_string_array(char* s, int size_t);
@@ -7,6 +8,8 @@ void test_constructor_c_string_array(char* s, int size_t);
 int main(){
   string test = string();
   test.print();
+
+  std::cout<<test.c_str()<<std::endl;
 
   char a = 'a';
   char* s = &a;
