@@ -3,6 +3,7 @@ class string{
     string();
     string(const string& copy);
     string(char* s);
+    string(char* s, int n);
     int size();
     void print();
   private :
