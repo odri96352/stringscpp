@@ -4,13 +4,14 @@
 
 void test_constructor_c_string(char* s);
 void test_constructor_c_string_array(char* s, int size_t);
+int test_max_size();
 
 int main(){
   string test = string();
   test.print();
 
   std::cout<<test.c_str()<<std::endl;
-
+  
   char a = 'a';
   char* s = &a;
   test_constructor_c_string(s);
@@ -31,3 +32,5 @@ void test_constructor_c_string_array(char* t, int size_t){
   string output = string(t, size_t);
   output.print();
 };
+
+int test_max_size(){};
