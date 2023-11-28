@@ -35,6 +35,7 @@ string::string(const string& copy){
 	}
 };
 
+
 void string::print(){
   for(int i=0; i<this->size_; ++i){
     std::cout<<this->list_char_[i];
@@ -61,11 +62,19 @@ string::string(char* s, int n){
 };
 
 char* string::c_str(){
+
   char* cEquivalent=new char[this->size_ +1];
   for(int i=0; i<this->size_; ++i){
     cEquivalent[i]=this->list_char_[i];
-    }
+  }
   cEquivalent[this->size_ +1]='\0';
   //cEquivalent[this->size_ +2]='0';
   return cEquivalent;
+};
+
+
+void string::clear(){
+  this->size_=0;
+  delete [] list_char_;
+  this->list_char_=nullptr;
 };
