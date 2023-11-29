@@ -45,9 +45,17 @@ void string::print(){
 string::string(char* s){
   //Copies the null-terminated character sequence
   //(C-string) pointed by s.
-  this -> list_char_ = new char[1];
-  list_char_[0] = *s;
-  this -> size_ = 1;
+  //a C-String has to end with '/0'.
+  int i = 0;
+  while(i < size_max && s[i] != '\0' ){
+    i += 1;
+  }
+  this -> size_ = i;
+  this -> list_char_ = new char[i];
+  for (int j =0; j<i; j++){
+    list_char_[j] = s[j];
+  }
+  return;
 };
 
 string::string(char* s, int n){
@@ -76,11 +84,21 @@ void string::clear(){
   this->list_char_=nullptr;
 };
 
-void string::operator_egal(char t){
-  this->size_=0;
-  delete [] this->list_char_;
-  this->list_char_[this->size_]=t;
+string& string::operator=(char* t){
+  delete [] this -> list_char_;
+  int i = 0;
+  while(i < size_max || t[i] != '\0' ){
+    i += 1;
+  }
+  this -> size_ = i;
+  this -> list_char_ = new char[i];
+  for (int j =0; j<i; j++){
+    list_char_[j] = t[j];
+  }
+  return *this;
 };
+
+string& operator= (const string& str){};
 
 void string::resize(int n){
   // Resizes the string to a length of n characters.
@@ -120,4 +138,35 @@ void string::resize(int n){
 return;
 };
 
-void string::resize(int n,  char c){};
+void string::resize(int n,  char c){
+//Resizes the string to a length of n characters.
+// If c is specified, the new elements are initialized as copies of c
+
+if(n > size_){
+  char* temp = new char[n];
+  for(int i=0; i< size_; i++){
+    temp[i]=list_char_[i];
+  }
+  delete [] this -> list_char_;
+  for(int i=size_; i < n; i++){
+    temp[i]= c;
+  }
+  this -> list_char_ = temp;
+  this -> size_ = n;
+
+}else if(n < size_){
+  char* temp = new char[n];
+  for(int i=0; i< n; i++){
+    temp[i]=list_char_[i];
+  }
+  delete [] this -> list_char_;
+  this -> list_char_ = temp;
+  this -> size_ = n;
+
+}else{
+  return;
+}
+return;
+
+
+};

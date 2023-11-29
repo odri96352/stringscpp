@@ -9,8 +9,9 @@ void test_clear();
 void test_constructor_c_string(char* s);
 void test_constructor_c_string_array(char* s, int size_t);
 int test_max_size();
-void test_operator_egal();
+void test_operator_egal(char* c);
 void test_resize(string t);
+void test_resize_with_char(string t, char c);
 
 int main(){
   test_constructeur_default();
@@ -19,18 +20,18 @@ int main(){
   test_copy_constructor(test);
   test_c_str(test);
   test_clear();
-  test_operator_egal();
 
-  char a = 'a';
-  char* s = &a;
-  test_constructor_c_string(s);
-
+  char t[] =  {'H', 'e', 'l', 'l', 'o', '\0'};
+  test_constructor_c_string(t);
   int taille = 3;
-  char t[] = {'a','b','c'};
   test_constructor_c_string_array(t, taille);
+
+  char c[] =  {'e','q', 'u', 'a', 'l',' ', 'o', 'p', 'e', 'r','a', 't', 'o', 'r', ' ', 'w', 'o', 'r', 'k', 's', '\0'};
+  test_operator_egal(c);
 
 
   test_resize(test);
+  test_resize_with_char( test , ')');
 
   std::exit(EXIT_SUCCESS);
 };
@@ -55,14 +56,14 @@ void test_c_str(string t){
 };
 
 void test_constructor_c_string(char* s){
-  std::cout << "test the constructor from a single char"<<std::endl;
+  std::cout << "test the constructor from an array of char"<<std::endl;
   string output = string(s);
   output.print();
   std::cout <<std::endl;
 };
 
 void test_constructor_c_string_array(char* t, int size_t){
-  std::cout << "test the constructor from an array of char"<<std::endl;
+  std::cout << "test the constructor from an array of char and limiting the size"<<std::endl;
   string output = string(t, size_t);
   output.print();
   std::cout <<std::endl;
@@ -89,10 +90,16 @@ void test_resize(string t){
   std::cout<<std::endl;
 };
 
-void test_operator_egal(){
-  std::cout << "test = operator"<<std::endl;
-  string test=string();
-  test.operator_egal('t');
-  test.print();
+void test_resize_with_char(string t, char c){
+  std::cout << "rajouter des charactères à la fin de mon string"<<std::endl;
+  t.resize(t.size() + 2, c);
+  t.print();
+  std::cout<<std::endl;
+};
+
+void test_operator_egal(char* c){
+  std::cout << " = operator"<<std::endl;
+  string output = c;
+  output.print();
   std::cout <<std::endl;
 };
