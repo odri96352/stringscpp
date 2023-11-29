@@ -98,7 +98,17 @@ string& string::operator=(char* t){
   return *this;
 };
 
-string& operator= (const string& str){};
+string& string::operator= (const string& str){
+// Assigns a new value to the string, replacing its current contents.
+// Parameter: A string object,whose value is copied
+  delete [] this -> list_char_;
+  this -> list_char_ = new char[str.size_];
+  this -> size_ = str.size_;
+  for (int i = 0; i<this -> size_; i++){
+      list_char_[i] = str.list_char_[i];
+  }
+  return *this;
+};
 
 void string::resize(int n){
   // Resizes the string to a length of n characters.

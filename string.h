@@ -16,6 +16,8 @@ class string{
     void resize(int n);
     void resize(int n,  char c);
 
+    //string operator+(const string& lhs, const char& rhs);
+
 
   private :
     char* list_char_;
@@ -26,3 +28,4 @@ class string{
 // Remarques:
 // pour la fonction "resize", est ce qu'on peut avoir des arguments non obligatoires en c++ (pour l'arg "char c") ?
 // faire gaffe au deletes et aux news, vérifier qu'il n'y a pas de leaks
+// ça veut dire quoi string&, et pourquoi il faut retourner this* pour que ça marche ?
