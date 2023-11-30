@@ -9,11 +9,14 @@ void test_clear();
 void test_constructor_c_string(char* s);
 void test_constructor_c_string_array(char* s, int size_t);
 int test_max_size();
-void test_operator_egal(char* c, string s);
+void test_operator_egal(char* s, string t, char c);
 void test_resize(string t);
 void test_resize_with_char(string t, char c);
 void test_operator_plus(string a, char b);
-string operator+(const string& lhs, char rhs);
+// string operator+(const string& lhs, char rhs);
+void test_reserve_and_capacity(string t);
+void test_empty(string t);
+
 
 int main(){
   test_constructeur_default();
@@ -31,12 +34,15 @@ int main(){
   char b[] =  {'e','q', 'u', 'a', 'l',' ', 'o', 'p', 'e', 'r','a', 't', 'o', 'r', ' ', 'w', 'o', 'r', 'k', 's', ' ','w','i','t','h', ' ', 'a','r','r','a','y','s','\0'};
   char c[] = {'e','q', 'u', 'a', 'l',' ', 'o', 'p', 'e', 'r','a', 't', 'o', 'r', ' ', 'w', 'o', 'r', 'k', 's', ' ','w','i','t','h', ' ','s','t','r','i','n','g','\0'};
   string s = string (c);
-  test_operator_egal(b, s);
+  test_operator_egal(b, s, 'w');
   test_operator_plus(s, 's');
+
+  test_reserve_and_capacity(test);
 
 
   test_resize(test);
   test_resize_with_char( test , ')');
+  test_empty(test);
 
   std::exit(EXIT_SUCCESS);
 };
@@ -102,36 +108,79 @@ void test_resize_with_char(string t, char c){
   std::cout<<std::endl;
 };
 
-void test_operator_egal(char* c, string s){
+void test_operator_egal(char* s, string t, char c){
   std::cout << " = operator with array of characters"<<std::endl;
-  string output = c;
+  string output = s;
   output.print();
   std::cout <<std::endl;
   std::cout << " = operator with an other string"<<std::endl;
-  output = s;
+  output = t;
+  output.print();
+  std::cout <<std::endl;
+  std::cout << " = operator with a single char"<<std::endl;
+  output = c;
   output.print();
   std::cout <<std::endl;
 };
 
-string operator+(const string& lhs, char rhs){
-  //Returns a newly constructed string object
-  //with its value being the concatenation of
-  //the characters in lhs followed by those of rhs.
+// string operator+(const string& lhs, char rhs){
+//   //Returns a newly constructed string object
+//   //with its value being the concatenation of
+//   //the characters in lhs followed by those of rhs.
+//
+//   string string_temp=string(lhs);
+//   char* contenu_de_string_temp=string_temp.c_str();
+//   char tableau_temp[string_temp.size()+2];
+//
+//   for (int i = 0; i<string_temp.size(); ++i){ // "-1" pour ne pas récupérer '\0'
+//       tableau_temp[i] = contenu_de_string_temp[i];
+//   }
+//   tableau_temp[string_temp.size()]=rhs;
+//     tableau_temp[string_temp.size()+1]='\0';
+//
+//   string output=string(tableau_temp);
+//   return output;
+//
+// };
 
-  string string_temp=string(lhs);
-  char* contenu_de_string_temp=string_temp.c_str();
-  char tableau_temp[string_temp.size()+2];
 
-  for (int i = 0; i<string_temp.size(); ++i){ // "-1" pour ne pas récupérer '\0'
-      tableau_temp[i] = contenu_de_string_temp[i];
-  }
-  tableau_temp[string_temp.size()]=rhs;
-    tableau_temp[string_temp.size()+1]='\0';
-
-  string output=string(tableau_temp);
-  return output;
+void test_reserve_and_capacity(string t){
+  std::cout<<"Testing the reserve and capacity function"<<std::endl;
+  std::cout<<"The string ";
+  t.print();
+  std::cout<<"takes up ";
+  std::cout<<t.capacity();
+  std::cout<<" bytes."<<std::endl;
+  t.reserve(t.size()+3);
+  std::cout<<"After increasing the capacity, the string ";
+  t.print();
+  std::cout<<"takes up ";
+  std::cout<<t.capacity();
+  std::cout<<" bytes."<<std::endl;
+  t.reserve(t.size()-1);
+  std::cout<<"After diminishing the capacity, the string ";
+  t.print();
+  std::cout<<"takes up ";
+  std::cout<<t.capacity();
+  std::cout<<" bytes.";
+  std::cout<<std::endl;
 
 };
+
+void test_empty(string t){
+  std::cout<< "Testing the emptyness of a string"<<std::endl;
+  std::cout<<"The string: ";
+  t.print();
+  std::cout<<"is empty"<<std::endl;
+  std::cout<<t.empty()<<std::endl;
+  t.clear();
+  std::cout<<"After clearin it, the string: ";
+  t.print();
+  std::cout<<"is empty"<<std::endl;
+  std::cout<<t.empty();
+  std::cout<<std::endl;
+};
+
 
 void test_operator_plus(string a, char b){
   std::cout << " + operator with one character "<<std::endl;
