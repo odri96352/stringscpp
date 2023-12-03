@@ -77,20 +77,14 @@ string::string(char* s, int n){
 };
 
 char* string::c_str(){
-  char* cEquivalent=new char[this->size_ +1];
-  for(int i=0; i<this->size_; ++i){
-    cEquivalent[i]=this->list_char_[i];
-    }
-  cEquivalent[this->size_ +1]='\0';
-  //cEquivalent[this->size_ +2]='0';
-  return cEquivalent;
+  return this-> list_char_;
 };
 
 void string::clear(){
   this->size_=0;
   this -> capacity_=0;
   delete [] list_char_;
-  this->list_char_=nullptr;
+  this->list_char_= nullptr;
 };
 
 string& string::operator=(char* t){
@@ -122,8 +116,8 @@ string& string::operator= (const string& str){
 };
 
 string& string::operator= (char c){
-  // The string value is set to a single copy of character c
-  // (the string length becomes 1)
+// The string value is set to a single copy of character c
+// (the string length becomes 1)
   this -> resize(1);
   this -> list_char_[0] = c;
   this -> size_ = 1;
@@ -132,16 +126,16 @@ string& string::operator= (char c){
 };
 
 void string::resize(int n){
-  // Resizes the string to a length of n characters.
+// Resizes the string to a length of n characters.
 
-  // If n is smaller than the current string length,
-  // the current value is shortened to its first n character,
-  // removing the characters beyond the nth.
-  // the capacity isn't shortened.
+// If n is smaller than the current string length,
+// the current value is shortened to its first n character,
+// removing the characters beyond the nth.
+// the capacity isn't shortened.
 
-  // If n is greater than the current string length,
-  // the current content is extended by inserting at the end
-  // as many characters as needed to reach a size of n.
+// If n is greater than the current string length,
+// the current content is extended by inserting at the end
+// as many characters as needed to reach a size of n.
 
   if(n > size_){
     char* temp = new char[n];
@@ -168,53 +162,51 @@ void string::resize(int n){
   }else{
     return;
   }
-return;
+  return;
 };
 
 void string::resize(int n,  char c){
 //Resizes the string to a length of n characters.
 // If c is specified, the new elements are initialized as copies of c
 
-if(n > size_){
-  char* temp = new char[n];
-  for(int i=0; i< size_; i++){
-    temp[i]=list_char_[i];
-  }
-  delete [] this -> list_char_;
-  for(int i=size_; i < n; i++){
-    temp[i]= c;
-  }
-  this -> list_char_ = temp;
-  this -> size_ = n;
-  this -> capacity_ = n;
+  if(n > size_){
+    char* temp = new char[n];
+    for(int i=0; i< size_; i++){
+      temp[i]=list_char_[i];
+    }
+    delete [] this -> list_char_;
+    for(int i=size_; i < n; i++){
+      temp[i]= c;
+    }
+    this -> list_char_ = temp;
+    this -> size_ = n;
+    this -> capacity_ = n;
 
-}else if(n < size_){
-  char* temp = new char[n];
-  for(int i=0; i< n; i++){
-    temp[i]=list_char_[i];
-  }
-  delete [] this -> list_char_;
-  this -> list_char_ = temp;
-  this -> size_ = n;
+  }else if(n < size_){
+    char* temp = new char[n];
+    for(int i=0; i< n; i++){
+      temp[i]=list_char_[i];
+    }
+    delete [] this -> list_char_;
+    this -> list_char_ = temp;
+    this -> size_ = n;
 
-}else{
+  }else{
+    return;
+  }
   return;
-}
-return;
-
-
 };
 
 int string::capacity(){
-  //Returns the size of the storage space currently allocated for the string, expressed in terms of bytes.
-  //This capacity is not necessarily equal to the string length.
-  //(pour l'instant, pour nous, si. On a pas créé de méthodes d'optimisation d'ajout de charactères)
-  //"char" types take 1 byte of storage
+//Returns the size of the storage space currently allocated for the string, expressed in terms of bytes.
+//This capacity is not necessarily equal to the string length.
+//(pour l'instant, pour nous, si. On a pas créé de méthodes d'optimisation d'ajout de charactères)
+//"char" types take 1 byte of storage
   return this -> capacity_;
 };
 
 bool string::empty(){
-  // Returns whether the string is empty (i.e. whether its length is 0).
+// Returns whether the string is empty (i.e. whether its length is 0).
   if ( this -> size_ == 0){
     return true;
   } else {
@@ -223,9 +215,9 @@ bool string::empty(){
 };
 
 void string::reserve (int n){
-  // Requests that the string capacity be adapted to a planned change in size to a length of up to n characters.
-  // if n> the size of the string, we increase its capacity to n.
-  // if n< the size of the string, we delete the elements from [n; size of string]
+// Requests that the string capacity be adapted to a planned change in size to a length of up to n characters.
+// if n> the size of the string, we increase its capacity to n.
+// if n< the size of the string, we delete the elements from [n; size of string]
   this -> capacity_ = n;
   char* new_list_char = new char[n];
   for (int i=0; i<n; ++i){

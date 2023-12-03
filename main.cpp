@@ -13,18 +13,19 @@ void test_operator_egal(char* s, string t, char c);
 void test_resize(string t);
 void test_resize_with_char(string t, char c);
 void test_operator_plus(string a, string b, char c);
+string operator+(const string& a1, char* b1);
 string operator+(const string& lhs, char rhs);
 string operator+(const string& lhs, const string& rhs);
 void test_reserve_and_capacity(string t);
 void test_empty(string t);
 
-
 int main(){
-  test_constructeur_default();
 
+  test_constructeur_default();
   string test = string();
   test_copy_constructor(test);
   test_c_str(test);
+
   test_clear();
 
   char a[] =  {'H', 'e', 'l', 'l', 'o', '\0'};
@@ -40,7 +41,6 @@ int main(){
 
   test_reserve_and_capacity(test);
 
-
   test_resize(test);
   test_resize_with_char( test , ')');
   test_empty(test);
@@ -48,8 +48,9 @@ int main(){
   std::exit(EXIT_SUCCESS);
 };
 
+
 void test_constructeur_default(){
-    std::cout << "test the default constructor"<<std::endl;
+  std::cout << "test the default constructor"<<std::endl;
   string test = string();
   test.print();
   std::cout <<std::endl;
@@ -64,7 +65,12 @@ void test_copy_constructor(string t){
 
 void test_c_str(string t){
   std::cout << "test the conversion string to array of characters"<<std::endl;
-  std::cout<<t.c_str()<<std::endl;
+  int taille=t.size();
+  std::cout << "[";
+  for (int i=0; i< taille; ++i){
+    std::cout <<   t.c_str()[i];
+  }
+  std::cout<<"]";
 };
 
 void test_constructor_c_string(char* s){
@@ -133,15 +139,27 @@ string operator+(const string& lhs, char rhs){
   char* contenu_de_string_temp=string_temp.c_str();
   char tableau_temp[string_temp.size()+2];
 
-  for (int i = 0; i<string_temp.size(); ++i){ // "-1" pour ne pas récupérer '\0'
+  for (int i = 0; i<string_temp.size(); ++i){
       tableau_temp[i] = contenu_de_string_temp[i];
   }
   tableau_temp[string_temp.size()]=rhs;
-    tableau_temp[string_temp.size()+1]='\0';
+  tableau_temp[string_temp.size()+1]='\0';
 
-  string output=string(tableau_temp);
-  return output;
+  return string(tableau_temp);
 
+};
+
+string operator+(const string& a1, char* b1){
+  string a2=string(a1);
+  int i = 0;
+  while(i < 100 || b1[i] != '\0' ){
+    i += 1;
+  }
+  a2.reserve(a2.size()+i);
+  for (int j = 0; j<i; j++){
+      a2 = a2 + b1[j];
+  }
+  return a2;
 };
 
 string operator+(const string& lhs, const string& rhs){
@@ -211,10 +229,13 @@ void test_empty(string t){
   std::cout<<std::endl;
 };
 
-
 void test_operator_plus(string a, string b, char c){
+  char list_char[3] = {'a','b','c'};
   std::cout << " + operator with one character "<<std::endl;
-  string output = a + c;
+  string output = a + *list_char;
+  output.print();
+  std::cout << " + operator with one character "<<std::endl;
+  output = a + c;
   output.print();
   std::cout << " + operator with two strings "<<std::endl;
   output = a + b;

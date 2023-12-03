@@ -5,14 +5,12 @@ class string{
     string(char* s);
     string(char* s, int n);
     ~string();
-
     int size();
     int length();
     void print();
     char* c_str();
     void clear();
     int max_size();
-
     string& operator=(char* t);
     string& operator= (const string& str);
     string& operator= (char c);
@@ -26,14 +24,11 @@ class string{
     bool empty();
     void reserve (int n = 0);
 
-
-
   private :
     char* list_char_;
     int size_;
     int capacity_;
 };
-
 
 // Remarques:
 // pour la fonction "resize", est ce qu'on peut avoir des arguments non obligatoires en c++ (pour l'arg "char c") ?
