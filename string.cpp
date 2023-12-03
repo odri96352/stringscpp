@@ -222,30 +222,6 @@ bool string::empty(){
   }
 };
 
-// void reserve (int n = 0){
-//   // Requests that the string capacity be adapted to a planned change in size to a length of up to n characters.
-//   // if n> the size of the string, we increase its capacity to n.
-//   // if n< the size of the string, we set it's capacity to the current size of the string.
-//   if (n > this -> size_){
-//     this -> capacity_ = n;
-//     char new_list_char = new char[n];
-//     for (int i=0; i<this -> size_; ++i){
-//       new_list_char[i]= this -> list_char_[i];
-//     }
-//     delete [] this -> list_char_;
-//     this -> list_char_ = new_list_char;
-//
-//   } else {
-//     this -> capacity_ = this -> size_;
-//     char new_list_char = new char[this -> size_];
-//     for (int i=0; i<this -> size_; ++i){
-//       new_list_char[i]= this -> list_char_[i];
-//     }
-//     delete [] this -> list_char_;
-//     this -> list_char_ = new_list_char;
-//   }
-// };
-
 void string::reserve (int n){
   // Requests that the string capacity be adapted to a planned change in size to a length of up to n characters.
   // if n> the size of the string, we increase its capacity to n.
@@ -262,14 +238,18 @@ void string::reserve (int n){
   }
 };
 
-string string::operator+(char rhs){
-  //Returns a newly constructed string object
-  //with its value being the concatenation of
-  //the characters in this followed by those of rhs.
+// string string::operator+(char rhs){
+//   //Returns a newly constructed string object
+//   //with its value being the concatenation of
+//   //the characters in this followed by those of rhs.
+//
+//   this -> resize(this->size_ +1, rhs);
+//   string output=string(*this);
+//   this -> reserve(this->size_ - 1);
+//   return output;
+//
+// };
 
-  this -> resize(this->size_ +1, rhs);
-  string output=string(*this);
-  this -> reserve(this->size_ - 1);
-  return output;
-
-};
+// string string::operator+(const string&){
+//
+// };

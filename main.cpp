@@ -12,8 +12,9 @@ int test_max_size();
 void test_operator_egal(char* s, string t, char c);
 void test_resize(string t);
 void test_resize_with_char(string t, char c);
-void test_operator_plus(string a, char b);
-// string operator+(const string& lhs, char rhs);
+void test_operator_plus(string a, string b, char c);
+string operator+(const string& lhs, char rhs);
+string operator+(const string& lhs, const string& rhs);
 void test_reserve_and_capacity(string t);
 void test_empty(string t);
 
@@ -35,7 +36,7 @@ int main(){
   char c[] = {'e','q', 'u', 'a', 'l',' ', 'o', 'p', 'e', 'r','a', 't', 'o', 'r', ' ', 'w', 'o', 'r', 'k', 's', ' ','w','i','t','h', ' ','s','t','r','i','n','g','\0'};
   string s = string (c);
   test_operator_egal(b, s, 'w');
-  test_operator_plus(s, 's');
+  test_operator_plus(s,test,'s');
 
   test_reserve_and_capacity(test);
 
@@ -123,26 +124,55 @@ void test_operator_egal(char* s, string t, char c){
   std::cout <<std::endl;
 };
 
-// string operator+(const string& lhs, char rhs){
-//   //Returns a newly constructed string object
-//   //with its value being the concatenation of
-//   //the characters in lhs followed by those of rhs.
-//
-//   string string_temp=string(lhs);
-//   char* contenu_de_string_temp=string_temp.c_str();
-//   char tableau_temp[string_temp.size()+2];
-//
-//   for (int i = 0; i<string_temp.size(); ++i){ // "-1" pour ne pas récupérer '\0'
-//       tableau_temp[i] = contenu_de_string_temp[i];
-//   }
-//   tableau_temp[string_temp.size()]=rhs;
-//     tableau_temp[string_temp.size()+1]='\0';
-//
-//   string output=string(tableau_temp);
-//   return output;
-//
-// };
+string operator+(const string& lhs, char rhs){
+  //Returns a newly constructed string object
+  //with its value being the concatenation of
+  //the characters in lhs followed by those of rhs.
 
+  string string_temp=string(lhs);
+  char* contenu_de_string_temp=string_temp.c_str();
+  char tableau_temp[string_temp.size()+2];
+
+  for (int i = 0; i<string_temp.size(); ++i){ // "-1" pour ne pas récupérer '\0'
+      tableau_temp[i] = contenu_de_string_temp[i];
+  }
+  tableau_temp[string_temp.size()]=rhs;
+    tableau_temp[string_temp.size()+1]='\0';
+
+  string output=string(tableau_temp);
+  return output;
+
+};
+
+string operator+(const string& lhs, const string& rhs){
+  //Returns a newly constructed string object
+  //with its value being the concatenation of
+  //the characters in lhs followed by those of rhs.
+  string lhs_temp=string(lhs);
+  // std::cout<<"print copy of lhs" <<std::endl;
+  // lhs_temp.print();
+  string rhs_temp=string(rhs);
+  // std::cout<<"print copy of rhs" <<std::endl;
+  // rhs_temp.print();
+  int length= lhs_temp.size();
+  char* rhs_array_temp=rhs_temp.c_str();
+  // std::cout<<"print arrays of rhs" <<std::endl;
+  // std::cout << rhs_array_temp<<std::endl;
+  lhs_temp.reserve(length+rhs_temp.size());
+  // std::cout<<"print new capacity of arrays of lhs" <<std::endl;
+  // std::cout << lhs_temp.capacity()<<std::endl;
+
+  for (int i = 0; i<rhs_temp.size(); i++){
+      // std::cout<<"current character" <<std::endl;
+      // std::cout<<rhs_array_temp[i] <<std::endl;
+      lhs_temp = lhs_temp+ rhs_array_temp[i];
+      // std::cout<<"we added a new character" <<std::endl;
+      // lhs_temp.print();
+  }
+
+  return lhs_temp;
+
+};
 
 void test_reserve_and_capacity(string t){
   std::cout<<"Testing the reserve and capacity function"<<std::endl;
@@ -182,9 +212,12 @@ void test_empty(string t){
 };
 
 
-void test_operator_plus(string a, char b){
+void test_operator_plus(string a, string b, char c){
   std::cout << " + operator with one character "<<std::endl;
-  string output = a + b;
+  string output = a + c;
+  output.print();
+  std::cout << " + operator with two strings "<<std::endl;
+  output = a + b;
   output.print();
   std::cout <<std::endl;
 };

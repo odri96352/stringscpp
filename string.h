@@ -12,11 +12,14 @@ class string{
     char* c_str();
     void clear();
     int max_size();
+
     string& operator=(char* t);
     string& operator= (const string& str);
     string& operator= (char c);
 
-    string operator+(char rhs);
+    //string operator+(char rhs);
+    //string operator+(const string&);
+
     void resize(int n);
     void resize(int n,  char c);
     int capacity();
