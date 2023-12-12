@@ -205,7 +205,7 @@ void test_reserve_and_capacity(string t){
   std::cout<<"takes up ";
   std::cout<<t.capacity();
   std::cout<<" bytes."<<std::endl;
-  t.reserve(t.size()-1);
+  t.reserve(t.size()-2);
   std::cout<<"After diminishing the capacity, the string ";
   t.print();
   std::cout<<"takes up ";
