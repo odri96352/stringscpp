@@ -227,7 +227,14 @@ void string::reserve (int n){
     this -> list_char_ = new_list_char;
     this -> capacity_ = n;
   }else {
-    return;
+    char* new_list_char = new char[n];
+    for (int i=0; i<n; ++i){
+      new_list_char[i]= this -> list_char_[i];
+    }
+    delete [] this -> list_char_;
+    this -> list_char_ = new_list_char;
+    this -> capacity_ = n;
+    this->size_=n;
   }
 };
 
