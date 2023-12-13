@@ -218,15 +218,16 @@ void string::reserve (int n){
 // Requests that the string capacity be adapted to a planned change in size to a length of up to n characters.
 // if n> the size of the string, we increase its capacity to n.
 // if n< the size of the string, we delete the elements from [n; size of string]
-  this -> capacity_ = n;
-  char* new_list_char = new char[n];
-  for (int i=0; i<n; ++i){
-    new_list_char[i]= this -> list_char_[i];
-  }
-  delete [] this -> list_char_;
-  this -> list_char_ = new_list_char;
-  if (n< this -> size_) {
-    this -> size_= n;
+  if (n>this->capacity_){
+    char* new_list_char = new char[n];
+    for (int i=0; i<this-> size_; ++i){
+      new_list_char[i]= this -> list_char_[i];
+    }
+    delete [] this -> list_char_;
+    this -> list_char_ = new_list_char;
+    this -> capacity_ = n;
+  }else {
+    return;
   }
 };
 
