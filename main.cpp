@@ -163,6 +163,58 @@ void test_operator_egal(char* s, string t, char c){
   std::cout <<std::endl;
 };
 
+void test_reserve_and_capacity(string t){
+  std::cout<<"Testing the reserve and capacity function"<<std::endl;
+  std::cout<<"The string ";
+  t.print();
+  std::cout<<"takes up ";
+  std::cout<<t.capacity();
+  std::cout<<" bytes."<<std::endl;
+  t.reserve(t.size()+3);
+  std::cout<<"After increasing the capacity, the string ";
+  t.print();
+  std::cout<<"takes up ";
+  std::cout<<t.capacity();
+  std::cout<<" bytes."<<std::endl;
+  t.reserve(t.size()-2);
+  std::cout<<"After diminishing the capacity, the string ";
+  t.print();
+  std::cout<<"takes up ";
+  std::cout<<t.capacity();
+  std::cout<<" bytes.";
+  std::cout<<std::endl;
+
+};
+
+void test_empty(string t){
+  std::cout<< "Testing the emptyness of a string"<<std::endl;
+  std::cout<<"The string: ";
+  t.print();
+  std::cout<<"is empty"<<std::endl;
+  std::cout<<t.empty()<<std::endl;
+  t.clear();
+  std::cout<<"After clearin it, the string: ";
+  t.print();
+  std::cout<<"is empty"<<std::endl;
+  std::cout<<t.empty();
+  std::cout<<std::endl;
+};
+
+void test_operator_plus(string a, string b, char c){
+  std::cout<< "Testing the different + operators"<<std::endl;
+  char list_char[14] = {' ','a','n','d',' ','c','s','t','r','i','n','g','s', '\0'};
+  std::cout << " + operator with c_string [a,b,c] "<<std::endl;
+  string output = a + list_char;
+  output.print();
+  std::cout << " + operator with one character "<<std::endl;
+  output = a + c;
+  output.print();
+  std::cout << " + operator with two strings "<<std::endl;
+  output = a + b;
+  output.print();
+  std::cout <<std::endl;
+};
+
 string operator+(const string& lhs, char rhs){
   //Returns a newly constructed string object
   //with its value being the concatenation of
@@ -223,56 +275,4 @@ string operator+(const string& lhs, const string& rhs){
 
   return lhs_temp;
 
-};
-
-void test_reserve_and_capacity(string t){
-  std::cout<<"Testing the reserve and capacity function"<<std::endl;
-  std::cout<<"The string ";
-  t.print();
-  std::cout<<"takes up ";
-  std::cout<<t.capacity();
-  std::cout<<" bytes."<<std::endl;
-  t.reserve(t.size()+3);
-  std::cout<<"After increasing the capacity, the string ";
-  t.print();
-  std::cout<<"takes up ";
-  std::cout<<t.capacity();
-  std::cout<<" bytes."<<std::endl;
-  t.reserve(t.size()-2);
-  std::cout<<"After diminishing the capacity, the string ";
-  t.print();
-  std::cout<<"takes up ";
-  std::cout<<t.capacity();
-  std::cout<<" bytes.";
-  std::cout<<std::endl;
-
-};
-
-void test_empty(string t){
-  std::cout<< "Testing the emptyness of a string"<<std::endl;
-  std::cout<<"The string: ";
-  t.print();
-  std::cout<<"is empty"<<std::endl;
-  std::cout<<t.empty()<<std::endl;
-  t.clear();
-  std::cout<<"After clearin it, the string: ";
-  t.print();
-  std::cout<<"is empty"<<std::endl;
-  std::cout<<t.empty();
-  std::cout<<std::endl;
-};
-
-void test_operator_plus(string a, string b, char c){
-  std::cout<< "Testing the different + operators"<<std::endl;
-  char list_char[14] = {' ','a','n','d',' ','c','s','t','r','i','n','g','s', '\0'};
-  std::cout << " + operator with c_string [a,b,c] "<<std::endl;
-  string output = a + list_char;
-  output.print();
-  std::cout << " + operator with one character "<<std::endl;
-  output = a + c;
-  output.print();
-  std::cout << " + operator with two strings "<<std::endl;
-  output = a + b;
-  output.print();
-  std::cout <<std::endl;
 };
