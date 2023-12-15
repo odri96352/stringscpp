@@ -32,8 +32,8 @@ int main(){
   int taille = 3;
   test_constructor_c_string_array(a, taille);
 
-  char b[] =  {'e','q', 'u', 'a', 'l',' ', 'o', 'p', 'e', 'r','a', 't', 'o', 'r', ' ', 'w', 'o', 'r', 'k', 's', ' ','w','i','t','h', ' ', 'a','r','r','a','y','s','\0'};
-  char c[] = {'e','q', 'u', 'a', 'l',' ', 'o', 'p', 'e', 'r','a', 't', 'o', 'r', ' ', 'w', 'o', 'r', 'k', 's', ' ','w','i','t','h', ' ','s','t','r','i','n','g','\0'};
+  char b[] =  {'E','q', 'u', 'a', 'l',' ', 'o', 'p', 'e', 'r','a', 't', 'o', 'r', ' ', 'w', 'o', 'r', 'k', 's', ' ','w','i','t','h', ' ', 'a','r','r','a','y','s','\0'};
+  char c[] = {'E','q', 'u', 'a', 'l',' ', 'o', 'p', 'e', 'r','a', 't', 'o', 'r', ' ', 'w', 'o', 'r', 'k', 's', ' ','w','i','t','h', ' ','s','t','r','i','n','g','\0'};
   string s = string (c);
   test_operator_egal(b, s, 'w');
   test_operator_plus(s,test,'s');
@@ -144,15 +144,25 @@ void test_resize(string t, char c){
 
 
 void test_operator_egal(char* s, string t, char c){
-  std::cout << " = operator with array of characters"<<std::endl;
+  std::cout << "Testing the operator="<<std::endl;
+  std::cout << "With an array of characters"<<std::endl;
+  std::cout << "Should be: "<<std::endl;
+  std::cout << "Equal operator works with arrays"<<std::endl;
+  std::cout << "Is: "<<std::endl;
   string output = s;
   output.print();
   std::cout <<std::endl;
-  std::cout << " = operator with an other string"<<std::endl;
+  std::cout << "With an other string"<<std::endl;
+  std::cout << "Should be: "<<std::endl;
+  std::cout << "Equal operator works with string"<<std::endl;
+  std::cout << "Is: "<<std::endl;
   output = t;
   output.print();
   std::cout <<std::endl;
-  std::cout << " = operator with a single char"<<std::endl;
+  std::cout << "With a single character"<<std::endl;
+  std::cout << "Should be: "<<std::endl;
+  std::cout << "w"<<std::endl;
+  std::cout << "Is: "<<std::endl;
   output = c;
   output.print();
   std::cout <<std::endl;
