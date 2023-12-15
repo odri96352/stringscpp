@@ -8,7 +8,7 @@ void test_c_str(string t);
 void test_clear();
 void test_constructor_c_string(char* s);
 void test_constructor_c_string_array(char* s, int size_t);
-int test_max_size();
+void test_max_size();
 void test_operator_egal(char* s, string t, char c);
 void test_resize(string t, char c);
 void test_operator_plus(string a, string b, char c);
@@ -111,7 +111,7 @@ void test_clear(){
   test.print();
   std::cout <<std::endl;
 };
-int test_max_size(){};
+void test_max_size(){};
 
 void test_resize(string t, char c){
   std::cout << "Testing the resize function"<<std::endl;
@@ -192,16 +192,21 @@ void test_reserve_and_capacity(string t){
 
 };
 
+
 void test_empty(string t){
   std::cout<< "Testing the emptyness of a string"<<std::endl;
   std::cout<<"The string: ";
   t.print();
-  std::cout<<"is empty"<<std::endl;
+  std::cout<<"isn't empty. The function should return: "<<std::endl;
+  std::cout<<"0"<<std::endl;
+  std::cout<<"Actually returns: "<<std::endl;
   std::cout<<t.empty()<<std::endl;
   t.clear();
   std::cout<<"After clearin it, the string: ";
   t.print();
-  std::cout<<"is empty"<<std::endl;
+  std::cout<<"is empty. The function should return:"<<std::endl;
+  std::cout<<"1"<<std::endl;
+  std::cout<<"Actually returns: "<<std::endl;
   std::cout<<t.empty();
   std::cout<<std::endl;
 };
@@ -239,61 +244,7 @@ string operator+(const string& lhs, char rhs){
   return string(tableau_temp);
 
 };
-void test_reserve_and_capacity(string t){
-  std::cout<<"Testing the reserve and capacity function"<<std::endl;
-  std::cout<<"The string ";
-  t.print();
-  std::cout<<"takes up ";
-  std::cout<<t.capacity();
-  std::cout<<" bytes."<<std::endl;
-  t.reserve(t.size()+3);
-  std::cout<<"After increasing the capacity, the string ";
-  t.print();
-  std::cout<<"takes up ";
-  std::cout<<t.capacity();
-  std::cout<<" bytes."<<std::endl;
-  t.reserve(t.size()-2);
-  std::cout<<"After diminishing the capacity, the string ";
-  t.print();
-  std::cout<<"takes up ";
-  std::cout<<t.capacity();
-  std::cout<<" bytes.";
-  std::cout<<std::endl;
 
-};
-
-void test_empty(string t){
-  std::cout<< "Testing the emptyness of a string"<<std::endl;
-  std::cout<<"The string: ";
-  t.print();
-  std::cout<<"isn't empty. The function should return: "<<std::endl;
-  std::cout<<"0"<<std::endl;
-  std::cout<<"Actually returns: "<<std::endl;
-  std::cout<<t.empty()<<std::endl;
-  t.clear();
-  std::cout<<"After clearin it, the string: ";
-  t.print();
-  std::cout<<"is empty. The function should return:"<<std::endl;
-  std::cout<<"1"<<std::endl;
-  std::cout<<"Actually returns: "<<std::endl;
-  std::cout<<t.empty();
-  std::cout<<std::endl;
-};
-
-void test_operator_plus(string a, string b, char c){
-  std::cout<< "Testing the different + operators"<<std::endl;
-  char list_char[14] = {' ','a','n','d',' ','c','s','t','r','i','n','g','s', '\0'};
-  std::cout << " + operator with c_string [a,b,c] "<<std::endl;
-  string output = a + list_char;
-  output.print();
-  std::cout << " + operator with one character "<<std::endl;
-  output = a + c;
-  output.print();
-  std::cout << " + operator with two strings "<<std::endl;
-  output = a + b;
-  output.print();
-  std::cout <<std::endl;
-};
 
 string operator+(const string& a1, const char* b1){
   string a2=string(a1);
