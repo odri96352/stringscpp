@@ -257,12 +257,16 @@ void test_empty(string t){
   std::cout<< "Testing the emptyness of a string"<<std::endl;
   std::cout<<"The string: ";
   t.print();
-  std::cout<<"is empty"<<std::endl;
+  std::cout<<"isn't empty. The function should return: "<<std::endl;
+  std::cout<<"0"<<std::endl;
+  std::cout<<"Actually returns: "<<std::endl;
   std::cout<<t.empty()<<std::endl;
   t.clear();
   std::cout<<"After clearin it, the string: ";
   t.print();
-  std::cout<<"is empty"<<std::endl;
+  std::cout<<"is empty. The function should return:"<<std::endl;
+  std::cout<<"1"<<std::endl;
+  std::cout<<"Actually returns: "<<std::endl;
   std::cout<<t.empty();
   std::cout<<std::endl;
 };
