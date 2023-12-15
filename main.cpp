@@ -10,8 +10,7 @@ void test_constructor_c_string(char* s);
 void test_constructor_c_string_array(char* s, int size_t);
 void test_max_size(string t);
 void test_operator_egal(char* s, string t, char c);
-void test_resize(string t);
-void test_resize_with_char(string t, char c);
+void test_resize(string t, char c);
 void test_operator_plus(string a, string b, char c);
 string operator+(const string& a1, const char* b1);
 string operator+(const string& lhs, char rhs);
@@ -41,8 +40,7 @@ int main(){
   test_max_size(test);
   test_reserve_and_capacity(test);
 
-  test_resize(test);
-  test_resize_with_char( test , ')');
+  test_resize(test, ')');
   test_empty(test);
 
   std::exit(EXIT_SUCCESS);
@@ -117,23 +115,30 @@ void test_max_size(string t){
   std::cout<<std::endl;
 };
 
-void test_resize(string t){
-  std::cout << "augmenter la taille de mon string"<<std::endl;
+void test_resize(string t, char c){
+  std::cout << "Testing the resize function"<<std::endl;
+  std::cout << "Making our string bigger"<<std::endl;
+  std::cout << "Should be: "<<std::endl;
+  std::cout << ":)0"<<std::endl;
+  std::cout << "Is: "<<std::endl;
   t.resize(t.size() + 1);
   t.print();
   std::cout<<std::endl;
-  std::cout << "diminuer la taille de mon string"<<std::endl;
+  std::cout << "Making our string smaller"<<std::endl;
+  std::cout << "Should be: "<<std::endl;
+  std::cout << ":"<<std::endl;
+  std::cout << "Is: "<<std::endl;
   t.resize(t.size() - 2);
   t.print();
-  std::cout<<std::endl;
-};
-
-void test_resize_with_char(string t, char c){
-  std::cout << "rajouter des charactères à la fin de mon string"<<std::endl;
+  std::cout << "Making our string bigger by adding specified characters"<<std::endl;
+  std::cout << "Should be: "<<std::endl;
+  std::cout << ":))"<<std::endl;
+  std::cout << "Is: "<<std::endl;
   t.resize(t.size() + 2, c);
   t.print();
   std::cout<<std::endl;
 };
+
 
 void test_operator_egal(char* s, string t, char c){
   std::cout << " = operator with array of characters"<<std::endl;
