@@ -13,7 +13,7 @@ void test_operator_egal(char* s, string t, char c);
 void test_resize(string t);
 void test_resize_with_char(string t, char c);
 void test_operator_plus(string a, string b, char c);
-string operator+(const string& a1, char* b1);
+string operator+(const string& a1, const char* b1);
 string operator+(const string& lhs, char rhs);
 string operator+(const string& lhs, const string& rhs);
 void test_reserve_and_capacity(string t);
@@ -149,10 +149,10 @@ string operator+(const string& lhs, char rhs){
 
 };
 
-string operator+(const string& a1, char* b1){
+string operator+(const string& a1, const char* b1){
   string a2=string(a1);
   int i = 0;
-  while(i < 100 || b1[i] != '\0' ){
+  while(i < 100 && b1[i] != '\0' ){
     i += 1;
   }
   a2.reserve(a2.size()+i);
@@ -230,9 +230,10 @@ void test_empty(string t){
 };
 
 void test_operator_plus(string a, string b, char c){
-  char list_char[3] = {'a','b','c'};
-  std::cout << " + operator with one character "<<std::endl;
-  string output = a + *list_char;
+  std::cout<< "Testing the different + operators"<<std::endl;
+  char list_char[14] = {' ','a','n','d',' ','c','s','t','r','i','n','g','s', '\0'};
+  std::cout << " + operator with c_string [a,b,c] "<<std::endl;
+  string output = a + list_char;
   output.print();
   std::cout << " + operator with one character "<<std::endl;
   output = a + c;
