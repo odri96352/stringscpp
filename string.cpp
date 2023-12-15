@@ -87,7 +87,7 @@ void string::clear(){
   this->list_char_= nullptr;
 };
 
-string& string::operator=(char* t){
+string& string::operator=(const char* t){
   delete [] this -> list_char_;
   int i = 0;
   while(i < size_max || t[i] != '\0' ){

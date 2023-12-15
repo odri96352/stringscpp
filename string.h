@@ -11,7 +11,7 @@ class string{
     char* c_str();
     void clear();
     int max_size();
-    string& operator=(char* t);
+    string& operator=(const char* t);
     string& operator= (const string& str);
     string& operator= (char c);
 
