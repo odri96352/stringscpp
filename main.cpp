@@ -8,7 +8,7 @@ void test_c_str(string t);
 void test_clear();
 void test_constructor_c_string(char* s);
 void test_constructor_c_string_array(char* s, int size_t);
-void test_max_size();
+void test_max_size(string t);
 void test_operator_egal(char* s, string t, char c);
 void test_resize(string t, char c);
 void test_operator_plus(string a, string b, char c);
@@ -26,7 +26,7 @@ int main(){
   test_c_str(test);
 
   test_clear();
-
+  test_max_size(test);
   char a[] =  {'H', 'e', 'l', 'l', 'o', '\0'};
   test_constructor_c_string(a);
   int taille = 3;
@@ -111,7 +111,14 @@ void test_clear(){
   test.print();
   std::cout <<std::endl;
 };
-void test_max_size(){};
+void test_max_size(string t){
+  std::cout << "Testing the max_size function"<<std::endl;
+  std::cout << "Should be: "<<std::endl;
+  std::cout << "100"<<std::endl;
+  std::cout << "Is: "<<std::endl;
+  std::cout<<t.max_size();
+  std::cout<<std::endl;
+};
 
 void test_resize(string t, char c){
   std::cout << "Testing the resize function"<<std::endl;
