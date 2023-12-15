@@ -71,12 +71,16 @@ void test_copy_constructor(string t){
 
 void test_c_str(string t){
   std::cout << "test the conversion string to array of characters"<<std::endl;
+  std::cout << "Should be: "<<std::endl;
+  std::cout << "[:)]"<<std::endl;
+  std::cout << "Is: "<<std::endl;
   int taille=t.size();
   std::cout << "[";
   for (int i=0; i< taille; ++i){
     std::cout <<   t.c_str()[i];
   }
-  std::cout<<"]"<<std::endl;
+  std::cout<<"]";
+  std::cout<<std::endl;
 };
 
 void test_constructor_c_string(char* s){
