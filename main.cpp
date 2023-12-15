@@ -50,7 +50,7 @@ int main(){
 
 
 void test_constructeur_default(){
-  std::cout << "test the default constructor"<<std::endl;
+  std::cout << "Testing the default constructor"<<std::endl;
   string test = string();
   test.print();
   std::cout <<std::endl;
