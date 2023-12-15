@@ -60,7 +60,10 @@ void test_constructeur_default(){
 };
 
 void test_copy_constructor(string t){
-  std::cout << "test the copy constructor"<<std::endl;
+  std::cout << "Testing the copy constructor"<<std::endl;
+  std::cout << "Should be: "<<std::endl;
+  std::cout << ":)"<<std::endl;
+  std::cout << "Is: "<<std::endl;
   string test_copy=string(t);
   test_copy.print();
   std::cout <<std::endl;
