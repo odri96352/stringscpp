@@ -8,7 +8,7 @@ void test_c_str(string t);
 void test_clear();
 void test_constructor_c_string(char* s);
 void test_constructor_c_string_array(char* s, int size_t);
-int test_max_size();
+void test_max_size(string t);
 void test_operator_egal(char* s, string t, char c);
 void test_resize(string t);
 void test_resize_with_char(string t, char c);
@@ -38,7 +38,7 @@ int main(){
   string s = string (c);
   test_operator_egal(b, s, 'w');
   test_operator_plus(s,test,'s');
-
+  test_max_size(test);
   test_reserve_and_capacity(test);
 
   test_resize(test);
@@ -103,7 +103,15 @@ void test_clear(){
   test.print();
   std::cout <<std::endl;
 };
-int test_max_size(){};
+
+void test_max_size(string t){
+  std::cout << "Testing the max_size function"<<std::endl;
+  std::cout << "Should be: "<<std::endl;
+  std::cout << "100"<<std::endl;
+  std::cout << "Is: "<<std::endl;
+  std::cout<<t.max_size();
+  std::cout<<std::endl;
+};
 
 void test_resize(string t){
   std::cout << "augmenter la taille de mon string"<<std::endl;
