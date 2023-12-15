@@ -85,6 +85,9 @@ void test_c_str(string t){
 
 void test_constructor_c_string(char* s){
   std::cout << "test the constructor from an array of char"<<std::endl;
+  std::cout << "Should be: "<<std::endl;
+  std::cout << "Hello"<<std::endl;
+  std::cout << "Is: "<<std::endl;
   string output = string(s);
   output.print();
   std::cout <<std::endl;
