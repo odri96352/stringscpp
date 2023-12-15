@@ -70,7 +70,7 @@ void test_c_str(string t){
   for (int i=0; i< taille; ++i){
     std::cout <<   t.c_str()[i];
   }
-  std::cout<<"]";
+  std::cout<<"]"<<std::endl;
 };
 
 void test_constructor_c_string(char* s){
