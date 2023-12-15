@@ -91,13 +91,15 @@ void test_constructor_c_string_array(char* t, int size_t){
 };
 
 void test_clear(){
-  std::cout << "printing a cleared string"<<std::endl;
+  std::cout << "Testing the clear function"<<std::endl;
+  std::cout << "Should be: "<<std::endl;
+  std::cout << "The string is clear"<<std::endl;
+  std::cout << "Is: "<<std::endl;
   string test=string();
   test.clear();
   test.print();
   std::cout <<std::endl;
 };
-
 int test_max_size(){};
 
 void test_resize(string t){

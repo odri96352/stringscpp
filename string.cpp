@@ -42,10 +42,14 @@ string::string(const string& copy){
 };
 
 void string::print(){
-  for(int i=0; i<this->size_; ++i){
-    std::cout<<this->list_char_[i];
+  if(this->size_==0){
+    std::cout<<"The string is clear"<<std::endl;
+  }else{
+    for(int i=0; i<this->size_; ++i){
+      std::cout<<this->list_char_[i];
+    }
+    std::cout<<std::endl;
   }
-  std::cout<<std::endl;
 };
 
 string::string(char* s){
@@ -237,19 +241,3 @@ void string::reserve (int n){
     this->size_=n;
   }
 };
-
-// string string::operator+(char rhs){
-//   //Returns a newly constructed string object
-//   //with its value being the concatenation of
-//   //the characters in this followed by those of rhs.
-//
-//   this -> resize(this->size_ +1, rhs);
-//   string output=string(*this);
-//   this -> reserve(this->size_ - 1);
-//   return output;
-//
-// };
-
-// string string::operator+(const string&){
-//
-// };
