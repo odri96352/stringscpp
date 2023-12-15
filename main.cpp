@@ -51,6 +51,9 @@ int main(){
 
 void test_constructeur_default(){
   std::cout << "Testing the default constructor"<<std::endl;
+  std::cout << "Should be: "<<std::endl;
+  std::cout << ":)"<<std::endl;
+  std::cout << "Is: "<<std::endl;
   string test = string();
   test.print();
   std::cout <<std::endl;
