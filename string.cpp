@@ -238,6 +238,8 @@ void string::reserve (int n){
     delete [] this -> list_char_;
     this -> list_char_ = new_list_char;
     this -> capacity_ = n;
-    this->size_=n;
+    if (n<this->size_){
+      this->size_=n;
+    }
   }
 };

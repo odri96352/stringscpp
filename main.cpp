@@ -179,7 +179,8 @@ void test_reserve_and_capacity(string t){
   std::cout<<"Takes up: "<<std::endl;
   std::cout<<t.capacity();
   std::cout<<" bytes."<<std::endl;
-  t.reserve(t.capacity()+3);
+  int new_capacity=t.capacity()+3;
+  t.reserve(new_capacity);
   std::cout<<"After increasing the capacity by 3, the string ";
   t.print();
   std::cout<<"Should takes up : "<<std::endl;
@@ -187,7 +188,8 @@ void test_reserve_and_capacity(string t){
   std::cout<<"Takes up : "<<std::endl;
   std::cout<<t.capacity();
   std::cout<<" bytes."<<std::endl;
-  t.reserve(t.capacity()-2);
+  int new_capacity_2=t.capacity()-2;
+  t.reserve(new_capacity_2);
   std::cout<<"After diminishing the capacity by 2, the string ";
   t.print();
   std::cout<<"Should takes up : "<<std::endl;
