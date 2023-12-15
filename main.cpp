@@ -33,8 +33,8 @@ int main(){
   test_constructor_c_string_array(a, taille);
 
   char b[] =  {'E','q', 'u', 'a', 'l',' ', 'o', 'p', 'e', 'r','a', 't', 'o', 'r', ' ', 'w', 'o', 'r', 'k', 's', ' ','w','i','t','h', ' ', 'a','r','r','a','y','s','\0'};
-  char c[] = {'E','q', 'u', 'a', 'l',' ', 'o', 'p', 'e', 'r','a', 't', 'o', 'r', ' ', 'w', 'o', 'r', 'k', 's', ' ','w','i','t','h', ' ','s','t','r','i','n','g','\0'};
-  string s = string (c);
+  char d[] = {'T','e','s','t','\0'};
+  string s = string (d);
   test_operator_egal(b, s, 'w');
   test_operator_plus(s,test,'s');
 
@@ -208,15 +208,24 @@ void test_empty(string t){
 
 void test_operator_plus(string a, string b, char c){
   std::cout<< "Testing the different + operators"<<std::endl;
-  char list_char[14] = {' ','a','n','d',' ','c','s','t','r','i','n','g','s', '\0'};
+  char list_char[14] = {' ','+','l','i','s','t',' ','c','h','a','r', '\0'};
   std::cout << " + operator with c_string [a,b,c] "<<std::endl;
+  std::cout << "Should print :  "<<std::endl;
+  std::cout << "Test +list char"<<std::endl;
   string output = a + list_char;
+  std::cout << "Print :  "<<std::endl;
   output.print();
   std::cout << " + operator with one character "<<std::endl;
+  std::cout << "Should print :  "<<std::endl;
+  std::cout << "Tests"<<std::endl;
   output = a + c;
+  std::cout << " Print :  "<<std::endl;
   output.print();
   std::cout << " + operator with two strings "<<std::endl;
+  std::cout << "Should print :  "<<std::endl;
+  std::cout << "Test:)"<<std::endl;
   output = a + b;
+  std::cout << "Print :  "<<std::endl;
   output.print();
   std::cout <<std::endl;
 };
