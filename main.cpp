@@ -193,10 +193,23 @@ void test_reserve_and_capacity(string t){
   std::cout<<"After diminishing the capacity by 2, the string ";
   t.print();
   std::cout<<"Should takes up : "<<std::endl;
-  std::cout<<"3"<<std::endl;
+  std::cout<<"3 bytes"<<std::endl;
   std::cout<<"Takes up :"<<std::endl;
   std::cout<<t.capacity();
-  std::cout<<" bytes.";
+  std::cout<<" bytes."<<std::endl;
+  std::cout<<"After diminishing the capacity by 2, the string ";
+  int new_capacity_3=t.capacity()-2;
+  t.reserve(new_capacity_3);
+  t.print();
+  std::cout<<"Should takes up : "<<std::endl;
+  std::cout<<"1 byte"<<std::endl;
+  std::cout<<"Takes up :"<<std::endl;
+  std::cout<<t.capacity();
+  std::cout<<" bytes."<<std::endl;
+  std::cout<<"And the string should print: "<<std::endl;
+  std::cout<<":"<<std::endl;
+  std::cout<<"Print:"<<std::endl;
+  t.print();
   std::cout<<std::endl;
 
 };
